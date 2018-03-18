@@ -12,55 +12,95 @@
 <body>
 
 <div id="mainContainer">
-  <header>
+  <header id="header">
     <div id="logoContainer">
           <div id="logo"></div>
     </div>
 
-    <form>
+    <form id="form">
       <div id="inputBoxContainer">
-        <input type="text" id="inputField" autocomplete="off">
-        <div id="submitIcon"></div>
+        <input type="text" id="inputField" autocomplete="off" placeholder="type streamer name">
+        <button type="submit" id="submitIcon"></button>
       </div>
     </form>
 
-
   </header>
 
+  <div id="warning">
+    <p id="warningText">User not found, please try again</p>
+  </div>
 
 
 
 
   <section id="streamContainer">
 
-
-    <footer>
-      <nav id="nav">
-        <button class="navBtn">All</button>
-
-        <button class="navBtn">Online <div class="circle onlineCircle"></div>
-        </button>
-        <button class="navBtn">Offline <div class="circle offlineCircle"></div>
-        </button>
-        <div id="btnMarker"></div>
-      </nav>
-
-    </footer>
-
-
+    <!-- dynamic cards go here -->
+    <p class="placeHolderText">check the status of your favourite streamers</p>
+    <p class="placeHolderText  count">0 online streamers</p>
+    <p class="placeHolderText count">0 offline streamers</p>
 
 
 
   </section>
 
 
+  <footer id="footer">
+    <nav id="nav">
+      <button class="navBtn noFilter active">All</button>
+
+      <button class="navBtn onlineFilter">Online <div class="circle onlineCircle"></div>
+      </button>
+      <button class="navBtn offlineFilter">Offline <div class="circle offlineCircle"></div>
+      </button>
+      <div id="btnMarker"></div>
+    </nav>
+
+  </footer>
+
+
+</div>
+
+  <div class="credits">
+    <p class="challenge"><a href="https://www.freecodecamp.org/challenges/use-the-twitchtv-json-api" target="_blank" ><span>FreeCodeCamp</span></a>'s Twitch Api Challenge</p>
+    <p class="author">Coded by <a href="https://github.com/CarboneMichele/twitch_api_fcc" target="_blank"  ><span>Michele Carbone</span></a></p>
+  </div>
+
+
+
+
+
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://raw.githack.com/janl/mustache.js/master/mustache.min.js"></script>
+<script type="mustache/x-tmpl" id="streamerCardTemplate">
+
+
+<article class="cardContainer {{isStreaming}}">
+
+    <a href="https://www.twitch.tv/{{streamer}}" target="_blank" class="streamerImgContainer">
+      <img src="{{streamerImage}}"class="streamerImg">
+    </a>
+
+    <div class="info">
+      <a href="https://www.twitch.tv/{{streamer}}" class="streamerName" target="_blank">{{streamer}}</a>
+      <p class="gameName">currently {{status}} <a href="https://www.twitch.tv/{{streamer}}" target="_blank" class="game">{{game}}</a></p>
+    </div>
+
+</article>
+
+</script>
 
 <script src="app.js"></script>
 
-</div>
+
+
+
+
+
+
 
 </body>
 </html>

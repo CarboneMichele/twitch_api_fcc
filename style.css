@@ -12,28 +12,80 @@ html,body,header,div,p,form,input{
 html{
 
   height: 100vh;
+  overflow: auto;
 
 
 }
 
 body{
   min-height: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: auto;
+
 
 }
 
+a{
+  text-decoration: none;
+}
 
+a:visited{
+  text-decoration: none;
+}
+
+a:focus{
+  text-decoration: none;
+}
+
+a:active{
+  text-decoration: none;
+}
+
+
+button{
+  border:none;
+  background-color: none;
+  text-decoration: none;
+}
+
+button:active, button:focus{
+  outline: none;
+
+}
 
 header{
 
-
+  position:fixed;
+  top:0;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-right: 5px;
   background:#4b367c ;
+  z-index: 2;
 
 }
+
+#warning{
+  position: absolute;
+  top:0;
+  width: 100%;
+  background-color: #FCD757;
+  z-index: 1;
+  padding:10px 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+
+#warningText{
+
+  color:rgba(0,0,0,0.5);
+
+}
+
+
 #mainContainer{
   position: relative;
   overflow: auto;
@@ -65,9 +117,11 @@ header{
   justify-content: flex-end;
   overflow: auto;
 }
+
+
 #inputField{
   height:30px;
-  width: 60%;
+  width: 90%;
   border:none;
   border-radius: 1px;
   padding:5px 5px;
@@ -80,14 +134,11 @@ header{
 
 #inputField:focus{
   outline:none;
-  width: 80%;
+
 }
 
 #submitIcon{
   width: 20%;
-  /* position: absolute;
-  top:0;
-  right:0; */
   height: 30px;
   background-color: white;
   background-image: url("img/search.svg");
@@ -96,18 +147,114 @@ header{
   background-repeat: no-repeat;
 }
 
+#submitIcon:hover, #submitBtn:active{
+  background-color: lightgray;
+}
+
+.placeHolderText{
+  margin:30% auto 0 auto;
+  text-align: center;
+  width: 70%;
+  line-height: 20px;
+  color: rgba(0,0,0,0.6);
+
+}
+
+.count{
+  display: none;
+}
+
+#streamContainer{
+
+  overflow: scroll;
+
+
+}
+
+
+#streamContainer::-webkit-scrollbar{
+  display: none;
+}
+
+.cardContainer{
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background-color: #fafafa;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding:10px 5px;
+
+
+}
+
+
+.mainCardContent{
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
+
+}
+.streamerImgContainer{
+  height: 100%;
+  width: 20%;
+
+
+}
+
+.streamerName{
+  text-decoration: none;
+  color:#4b367c ;
+  font-size: 20px;
+  width: 80%;
+  cursor: pointer;
+
+}
+.streamerImg{
+  margin:0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.info{
+  width: 80%;
+}
+
+
+.gameName{
+  color:rgba(0,0,0,0.6);
+}
+.game{
+  color:#4b367c;
+}
+
+.offline{
+  opacity:0.3;
+}
 
 footer{
   position: fixed;
   bottom:0;
   left: 0;
   width: 100%;
+
+  /* background-color: red; */
 }
 #nav{
 
   display: flex;
   flex-direction: row;
   width: 100%;
+
 
 
 
@@ -136,6 +283,7 @@ footer{
   /* background:none; */
   border:none;
   background-color: rgba(0,0,0,0.03);
+
   color:rgba(0,0,0,0.5);
   letter-spacing: 0.4px;
 
@@ -149,6 +297,14 @@ footer{
 
 }
 
+.navBtn:focus{
+  outline:none;
+}
+
+.navBtn:active{
+  background-color: rgba(0,0,0,0.07);
+
+}
 
 .circle{
   width:5px;
@@ -164,4 +320,60 @@ footer{
 
 .offlineCircle{
   background-color:red;
+}
+
+.credits{
+  display: none;
+}
+
+@media (min-width:400px){
+
+  html,body{
+    background-color: #FF8484;
+  }
+
+  #mainContainer{
+    position: relative;
+    width: 320px;
+    height: 440px;
+    margin:10%  auto 0 auto;
+    border-radius: 3px;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);
+
+  }
+
+  header{
+    position: absolute;
+    top:0;
+    left:0;
+  }
+
+  footer{
+    position: absolute;
+    bottom:0;
+  }
+
+  .navBtn:hover{
+    background-color: rgba(0,0,0,0.07);
+  }
+
+  .credits{
+
+    display:block;
+    margin:50px auto 0 auto;
+    color:rgba(0,0,0,0.5);
+    text-align: center;
+    line-height: 40px;
+  }
+
+
+  .credits span{
+    color : #4b367c;
+
+  }
+
+
+
+
+
 }
