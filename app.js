@@ -100,7 +100,7 @@ function handleUserData(data){
     //user does not exist
     //do something
     console.log("User not existent:", userCard);
-    showWarning();
+    showWarning("userNotExistent");
   }
   else{
 
@@ -180,6 +180,8 @@ function renderStreamerCard(){
     resetNavMarkerPosition();
     console.log("render");
 
+  }else{
+    showWarning("userAlreadyInList");
   }
 
 
@@ -337,13 +339,27 @@ function allowEnterKeyPressOnInput(event){
   }
 }//allowEnterKeyPressOnInput
 
-function showWarning(){
+function showWarning(danger){
 
     let warningDiv=document.getElementById("warning");
+    let warningText=document.getElementById("warningText");
 
-    warning.style.top="40px";
+
+    if(danger==="userAlreadyInList"){
+      warningDiv.style.backgroundColor="#5ADD9E";
+      warningText.innerHTML="User is already in your streamers list";
+    }
+    else if(danger==="userNotExistent"){
+
+      warningDiv.style.backgroundColor="#FCD757";
+      warningText.innerHTML="User not found, please try again";
+    }
+
+
+    warningDiv.style.top="40px";
 
     setTimeout(function(){warning.style.top="0";},2500);
+
 
 
 }//showWarning
